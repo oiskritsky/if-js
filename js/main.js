@@ -4,6 +4,8 @@ let student;
 console.log(user); //"John Doe"
 console.log(student); //"Undefined"
 
+let student = "Oleg";
+
 user = student;
 console.log(user); //undefined
 
