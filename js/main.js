@@ -107,12 +107,15 @@ const replaceTo = 'zero';
 
 const replaceNulltoZero = (array, word) => {
 	array.sort((a, b) => a - b);
+	let result = [];
 	for (let i = 0; i < arr.length; i++) {
 		let str = arr[i].toString();
 		let newStr = str.replace(/0/g, word);
 		arr[i] = newStr;
-		console.log(arr[i]);
+		result.push(newStr);
 	}
+
+	return result;
 };
 
-replaceNulltoZero(arr, replaceTo);
+console.log(replaceNulltoZero(arr, replaceTo));
