@@ -23,7 +23,7 @@
 // test = Boolean(test);
 // console.log(test); // True
 
-// let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+// const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 // let result = 0;
 
 // for (let i = 0; arr.length > i; i++) {
@@ -51,68 +51,78 @@
 ////////////////////lesson-3//////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-// const min = (a, x) => {
-// 	if (a > x) {
-// 		minResult = x;
-// 		return minResult;
-// 	} else if (a < x) {
-// 		minResult = a;
-// 		return minResult;
-// 	} else a == x;
-// 	minResult = "are equal";
-// 	return minResult;
-// };
+const min = (a, x) => {
+	if (a > x) {
+		minResult = x;
+		return minResult;
+	} else if (a < x) {
+		minResult = a;
+		return minResult;
+	} else {
+		minResult = 'are equal';
+		return minResult;
+	}
+};
 
-// const max = (a, x) => {
-// 	if (a < x) {
-// 		maxResult = x;
-// 		return maxResult;
-// 	} else if (a > x) {
-// 		maxResult = a;
-// 		return maxResult;
-// 	} else a == x;
-// 	maxResult = "are equal";
-// 	return maxResult;
-// };
+const max = (a, x) => {
+	if (a < x) {
+		maxResult = x;
+		return maxResult;
+	} else if (a > x) {
+		maxResult = a;
+		return maxResult;
+	} else {
+		maxResult = 'are equal';
+		return maxResult;
+	}
+};
 
-// console.log(min(111, -111));
-// console.log(max(333, -333));
+const min1 = (a, b) => (a > b ? a : b);
+const max1 = (a, b) => (a < b ? b : a);
 
-//////////////////////////////
-/////////PALINDROM////////////
-//////////////////////////////
+console.log(min(111, -111));
+console.log(max(333, -333));
 
-// const word1 = "ABba";
-// const word2 = "maMam";
-// const word3 = "USA";
-// const word4 = "caRarac";
-// const word5 = "RussIa";
+console.log(min1(111, -111));
+console.log(max1(333, -333));
 
-// const palindrome = (someWord) => {
-// 	return someWord.toLowerCase() === someWord.toLowerCase().split("").reverse().join("");
-// };
+////////////////////////////
+///////PALINDROM////////////
+////////////////////////////
 
-// console.log(palindrome(`${word1}`));
-// console.log(palindrome(`${word2}`));
-// console.log(palindrome(`${word3}`));
-// console.log(palindrome(`${word4}`));
-// console.log(palindrome(`${word5}`));
+const word1 = 'ABba';
+const word2 = 'maMam';
+const word3 = 'USA';
+const word4 = 'caRarac';
+const word5 = 'RussIa';
 
-///////////////////////////////////////
-///////////REPLACEMENT/////////////////
-///////////////////////////////////////
+const palindrome = (someWord) => {
+	return someWord.toLowerCase() === someWord.toLowerCase().split('').reverse().join('');
+};
+
+console.log(palindrome(`${word1}`));
+console.log(palindrome(`${word2}`));
+console.log(palindrome(`${word3}`));
+console.log(palindrome(`${word4}`));
+console.log(palindrome(`${word5}`));
+
+/////////////////////////////////////
+/////////REPLACEMENT/////////////////
+/////////////////////////////////////
 
 const arr = [1, 17, 20, 31, 40, 68, 99, 100, 6, 10];
 const replaceTo = 'zero';
 
 const replaceNulltoZero = (array, word) => {
-	array.sort((a, b) => a - b);
 	let result = [];
 	for (let i = 0; i < arr.length; i++) {
 		let str = arr[i].toString();
 		let newStr = str.replace(/0/g, word);
 		arr[i] = newStr;
-		result.push(newStr);
+
+		if (newStr / 1) {
+			result.push(+newStr);
+		} else result.push(newStr);
 	}
 
 	return result;
