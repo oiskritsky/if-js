@@ -176,13 +176,11 @@ const date = "2020-08-10";
 const date1 = "2021-12-26";
 
 const datetransform = (str) => {
-  result = "invalid date";
-  console.log(result);
   let arr = str.split("-");
   arr.reverse();
   if (arr[0] > 0 && arr[0] <= 31 && arr[1] >= 1 && arr[1] <= 12) {
     return (result = arr.join("."));
-  } else return (result = "Invalid Date");
+  } else return (result = "invalid date");
 };
 
 const s = datetransform;
