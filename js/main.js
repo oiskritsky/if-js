@@ -150,8 +150,9 @@ const element = document.getElementsByClassName('text');
 
 const colorChange = function () {
 	let i = 0;
-	return function () {
-		this.style.color = colors[i];
+	return function (e) {
+		e.currentTarget.style.color = colors[i];
+		console.log(this);
 		++i;
 		if (i === colors.length) {
 			i = 0;
