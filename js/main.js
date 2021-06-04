@@ -145,23 +145,45 @@
 
 ///task - 2
 
-const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
-const element = document.getElementsByClassName('text');
+// const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+// const element = document.getElementsByClassName('text');
 
-const colorChange = function () {
-	let i = 0;
-	return function (e) {
-		e.currentTarget.style.color = colors[i];
-		console.log(this);
-		++i;
-		if (i === colors.length) {
-			i = 0;
-		}
-	};
+// const colorChange = function () {
+// 	let i = 0;
+// 	return function (e) {
+// 		e.currentTarget.style.color = colors[i];
+// 		console.log(this);
+// 		++i;
+// 		if (i === colors.length) {
+// 			i = 0;
+// 		}
+// 	};
+// };
+
+// const colorChanged = colorChange;
+
+// for (let i = 0; i < element.length; i++) {
+// 	element[i].addEventListener('click', colorChanged());
+// }
+
+////////////////////////////////////
+//////////////lesson-5//////////////
+////////////////////////////////////
+
+///Task - 1: Преобразование формата даты///
+
+const date = "2020-08-10";
+const date1 = "2021-12-26";
+
+const datetransform = (str) => {
+  result = "invalid date";
+  console.log(result);
+  let arr = str.split("-");
+  arr.reverse();
+  if (arr[0] > 0 && arr[0] <= 31 && arr[1] >= 1 && arr[1] <= 12) {
+    return (result = arr.join("."));
+  } else return (result = "Invalid Date");
 };
 
-const colorChanged = colorChange;
-
-for (let i = 0; i < element.length; i++) {
-	element[i].addEventListener('click', colorChanged());
-}
+const s = datetransform;
+console.log(s(date));
