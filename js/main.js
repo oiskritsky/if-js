@@ -170,7 +170,7 @@
 //////////////lesson-5//////////////
 ////////////////////////////////////
 
-///Task - 1: Преобразование формата даты///
+// Task - 1: Преобразование формата даты//
 
 const date = "2020-08-10";
 const date1 = "2021-12-26";
@@ -178,10 +178,40 @@ const date1 = "2021-12-26";
 const datetransform = (str) => {
   let arr = str.split("-");
   arr.reverse();
+
   if (arr[0] > 0 && arr[0] <= 31 && arr[1] >= 1 && arr[1] <= 12) {
     return (result = arr.join("."));
   } else return (result = "invalid date");
 };
 
 const s = datetransform;
-console.log(s(date));
+console.log(s(date1));
+
+// Task - 2: Поиск объектов размещения//
+
+const data = [
+  { country: "Russia", city: "Saint Petersburg", hotel: "Hotel Leopold" },
+  { country: "Spain", city: "Santa Cruz de Tenerife", hotel: "Apartment Sunshine" },
+  { country: "Slowakia", city: "Vysokie Tatry", hotel: "Villa Kunerad" },
+  { country: "Germany", city: "Berlin", hotel: "Hostel Friendship" },
+  { country: "Indonesia", city: "Bali", hotel: "Ubud Bali Resort&SPA" },
+  { country: "Netherlands", city: "Rotterdam", hotel: "King Kong Hostel" },
+  { country: "Marocco", city: "Ourika", hotel: "Rokoko Hotel" },
+  { country: "Germany", city: "Berlin", hotel: "Hotel Rehberge Berlin Mitte" },
+];
+
+let search = prompt("Какую страну вы ищите?", "Germany");
+
+const getCountryData = (x, arr) => {
+  let result = "";
+  arr.forEach((element) => {
+    if (element.country == x) {
+      return (result += `Страна: ${element.country}, город: ${element.city}, отель: ${element.hotel} `);
+    }
+  });
+  return result;
+};
+
+const s = getCountryData;
+alert(s(search, data));
+console.log(typeof s(search, data), s(search, data)); //string
