@@ -173,15 +173,14 @@
 // Task - 1: Преобразование формата даты//
 
 const date = "2020-08-10";
-const date1 = "2021-12-26";
+const date1 = "2021-11-26";
 
 const datetransform = (str) => {
-  let arr = str.split("-");
-  arr.reverse();
-
+  let arr = str.split("-").reverse();
+  console.log(arr);
   if (arr[0] > 0 && arr[0] <= 31 && arr[1] >= 1 && arr[1] <= 12) {
-    return (result = arr.join("."));
-  } else return (result = "invalid date");
+    return arr.join(".");
+  } else return "invalid date";
 };
 
 const s = datetransform;
@@ -200,18 +199,24 @@ const data = [
   { country: "Germany", city: "Berlin", hotel: "Hotel Rehberge Berlin Mitte" },
 ];
 
-let search = prompt("Какую страну вы ищите?", "Germany");
-
-const getCountryData = (x, arr) => {
-  let result = "";
-  arr.forEach((element) => {
-    if (element.country == x) {
-      return (result += `Страна: ${element.country}, город: ${element.city}, отель: ${element.hotel} `);
+const findPlace = (arr, find) => {
+  let result = [];
+  arr.forEach((item) => {
+    if (
+      item.country.toLowerCase() === find.toLowerCase() ||
+      item.city.toLowerCase() === find.toLowerCase() ||
+      item.hotel.toLowerCase() === find.toLowerCase()
+    ) {
+      result.push(
+        `Страна: ${item.country.toString()}`,
+        `город: ${item.city.toString()}`,
+        `отель: ${item.hotel.toString()}`
+      );
     }
   });
   return result;
 };
 
-const s = getCountryData;
-alert(s(search, data));
-console.log(typeof s(search, data), s(search, data)); //string
+const findPlace1 = findPlace;
+console.log(findPlace1(data, "russia"));
+console.log(findPlace(data, "Germany"));
