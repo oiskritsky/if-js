@@ -170,18 +170,53 @@
 //////////////lesson-5//////////////
 ////////////////////////////////////
 
-///Task - 1: Преобразование формата даты///
+// Task - 1: Преобразование формата даты//
 
 const date = "2020-08-10";
-const date1 = "2021-12-26";
+const date1 = "2021-11-26";
 
 const datetransform = (str) => {
-  let arr = str.split("-");
-  arr.reverse();
+  let arr = str.split("-").reverse();
+  console.log(arr);
   if (arr[0] > 0 && arr[0] <= 31 && arr[1] >= 1 && arr[1] <= 12) {
-    return (result = arr.join("."));
-  } else return (result = "invalid date");
+    return arr.join(".");
+  } else return "invalid date";
 };
 
 const s = datetransform;
-console.log(s(date));
+console.log(s(date1));
+
+// Task - 2: Поиск объектов размещения//
+
+const data = [
+  { country: "Russia", city: "Saint Petersburg", hotel: "Hotel Leopold" },
+  { country: "Spain", city: "Santa Cruz de Tenerife", hotel: "Apartment Sunshine" },
+  { country: "Slowakia", city: "Vysokie Tatry", hotel: "Villa Kunerad" },
+  { country: "Germany", city: "Berlin", hotel: "Hostel Friendship" },
+  { country: "Indonesia", city: "Bali", hotel: "Ubud Bali Resort&SPA" },
+  { country: "Netherlands", city: "Rotterdam", hotel: "King Kong Hostel" },
+  { country: "Marocco", city: "Ourika", hotel: "Rokoko Hotel" },
+  { country: "Germany", city: "Berlin", hotel: "Hotel Rehberge Berlin Mitte" },
+];
+
+const findPlace = (arr, find) => {
+  let result = [];
+  arr.forEach((item) => {
+    if (
+      item.country.toLowerCase() === find.toLowerCase() ||
+      item.city.toLowerCase() === find.toLowerCase() ||
+      item.hotel.toLowerCase() === find.toLowerCase()
+    ) {
+      result.push(
+        `Страна: ${item.country.toString()}`,
+        `город: ${item.city.toString()}`,
+        `отель: ${item.hotel.toString()}`
+      );
+    }
+  });
+  return result;
+};
+
+const findPlace1 = findPlace;
+console.log(findPlace1(data, "russia"));
+console.log(findPlace(data, "Germany"));
