@@ -199,16 +199,6 @@
 //   { country: "Germany", city: "Berlin", hotel: "Hotel Rehberge Berlin Mitte" },
 // ];
 
-// const findPlace = (arr, find) => {
-//   let result = [];
-//   arr.forEach((item) => {
-//     if (item.country.toLowerCase() === find.toLowerCase() || item.city.toLowerCase() === find.toLowerCase() || item.hotel.toLowerCase() === find.toLowerCase()) {
-//       result.push(`Страна: ${item.country.toString()}`, `город: ${item.city.toString()}`, `отель: ${item.hotel.toString()}`);
-//     }
-//   });
-//   return result;
-// };
-
 // const findPlace1 = findPlace;
 // console.log(findPlace1(data, "russia"));
 // console.log(findPlace(data, "Germany"));
@@ -226,14 +216,17 @@
 // console.log(searchStr("France", data));
 // console.log(searchStr("Germany", data));
 
+////////////////////////////////////
+//////////////lesson-6//////////////
+////////////////////////////////////
+
 // 5.Функция palindrome (Слово палиндром может читаться справа-налево и слева-направо одинаково. Прим "шалаш".):
 // создайте функцию palindrome, которая будет возвращать bool значение в зависимости от того, является ли переданное функции слово палиндромом или нет;
 // теперь уже зная как работать со строками и массивами запишите реализацию этого метода в одну строку.
 
-// const palindrome = (someWord) => someWord.toLowerCase() === someWord.toLowerCase().split("").reverse().join("");
+const palindrome = (someWord) => someWord.toLowerCase() === someWord.toLowerCase().split("").reverse().join("");
 
-// console.log(palindrome("helloh"));
-// console.log(palindrome("hoh"));
+console.log(palindrome("SaSsSaS"));
 
 // Поиск объектов размещения:
 // дан массив;
@@ -278,24 +271,10 @@ const hotels = [
   { name: "Waikiki Resort Hotel", city: "Hawaii", country: "USA" },
 ];
 
-// const search = (arr, find) => (result = arr.filter((item) => item.country === find || item.city === find || item.name === find));
+const search = (arr, find) => (result = arr.filter((item) => item.country === find || item.city === find || item.name === find));
 
-// console.log(search(hotels, "Italy"));
-// console.log(search(hotels, "USA"));
-// console.log(search(hotels, "Nox Hostel"));
-// console.log(search(hotels, "UK"));
+console.log(search(hotels, "UK"));
 
-// const sorter = (arr) => {
-//   let map = new Map();
-//   for (let k in arr) {
-//     map.set(`${arr[k].country}`, [arr[k].city]);
-//   }
-//   let result = Object.fromEntries(map.entries());
-
-//   return result;
-// };
-
-// console.log(sorter(hotels));
 // Сопоставте страны с городами из массива:
 // дан массив;
 // напишите функцию, которая выберет все уникальные страны и сопоставит с ними города;
