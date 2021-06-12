@@ -244,7 +244,6 @@
 
 const hotels = [
   { name: "Hotel Leopold", city: "Saint Petersburg", country: "Russia" },
-  { name: "Hotel Leopold", city: "Saint Petersburg2", country: "Russia" },
   { name: "Apartment Sunshine", city: "Santa Cruz de Tenerife", country: "Spain" },
   { name: "Villa Kunerad", city: "Vysokie Tatry", country: "Slowakia" },
   { name: "Hostel Friendship", city: "Berlin", country: "Germany" },
@@ -273,8 +272,6 @@ const hotels = [
   { name: "Apart Neptun", city: "Gdansk", country: "Poland" },
   { name: "Lux Isla", city: "Ibiza", country: "Spain" },
   { name: "Nox Hostel", city: "London", country: "UK" },
-  { name: "Nox Hostel", city: "London3333", country: "UK" },
-  { name: "Nox Hostel", city: "Londonsadasdasdasdasdssa", country: "UK" },
   { name: "Leonardo Vienna", city: "Vienna", country: "Austria" },
   { name: "Adagio Aparthotel", city: "Edinburgh", country: "UK" },
   { name: "Steigenberger Hotel", city: "Hamburg", country: "Germany" },
@@ -312,7 +309,7 @@ const hotels = [
 // }
 
 const sorter = (arr) => {
-  let map = new Array();
+  let map = new Object();
   for (let k in arr) {
     if (map[arr[k].country] === undefined) {
       map[arr[k].country] = new Array(arr[k].city);
