@@ -202,16 +202,8 @@
 // const findPlace = (arr, find) => {
 //   let result = [];
 //   arr.forEach((item) => {
-//     if (
-//       item.country.toLowerCase() === find.toLowerCase() ||
-//       item.city.toLowerCase() === find.toLowerCase() ||
-//       item.hotel.toLowerCase() === find.toLowerCase()
-//     ) {
-//       result.push(
-//         `Страна: ${item.country.toString()}`,
-//         `город: ${item.city.toString()}`,
-//         `отель: ${item.hotel.toString()}`
-//       );
+//     if (item.country.toLowerCase() === find.toLowerCase() || item.city.toLowerCase() === find.toLowerCase() || item.hotel.toLowerCase() === find.toLowerCase()) {
+//       result.push(`Страна: ${item.country.toString()}`, `город: ${item.city.toString()}`, `отель: ${item.hotel.toString()}`);
 //     }
 //   });
 //   return result;
@@ -238,9 +230,8 @@
 // создайте функцию palindrome, которая будет возвращать bool значение в зависимости от того, является ли переданное функции слово палиндромом или нет;
 // теперь уже зная как работать со строками и массивами запишите реализацию этого метода в одну строку.
 
-// const palindrome = (someWord) => {
-//   return someWord.toLowerCase() === someWord.toLowerCase().split("").reverse().join("");
-// };
+// const palindrome = (someWord) => someWord.toLowerCase() === someWord.toLowerCase().split("").reverse().join("");
+
 // console.log(palindrome("helloh"));
 // console.log(palindrome("hoh"));
 
@@ -285,9 +276,21 @@ const hotels = [
   { name: "Steigenberger Hotel", city: "Hamburg", country: "Germany" },
 ];
 
-const search = (arr, find) =>
-  (result = arr.filter(
-    (item) => item.country === find || item.city === find || item.name === find
-  ));
+// const search = (arr, find) => (result = arr.filter((item) => item.country === find || item.city === find || item.name === find));
 
-console.log(search(hotels, "USA"));
+// console.log(search(hotels, "Italy"));
+// console.log(search(hotels, "USA"));
+// console.log(search(hotels, "Nox Hostel"));
+// console.log(search(hotels, "UK"));
+
+// Сопоставте страны с городами из массива:
+// дан массив;
+// напишите функцию, которая выберет все уникальные страны и сопоставит с ними города;
+// в консоли должен быть выведен примерно такой результат:
+// {
+//    Australia: ['Sydney'],
+//    Germany: ['Berlin', 'Hamburg'],
+//    Italy: ['Florence', 'Rome'],
+//    USA: ['Chicago', 'Hawaii', 'Miami'],
+//    Ukraine: ['Kyiv']
+// }
