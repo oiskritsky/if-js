@@ -244,6 +244,7 @@
 
 const hotels = [
   { name: "Hotel Leopold", city: "Saint Petersburg", country: "Russia" },
+  { name: "Hotel Leopold", city: "Saint Petersburg2", country: "Russia" },
   { name: "Apartment Sunshine", city: "Santa Cruz de Tenerife", country: "Spain" },
   { name: "Villa Kunerad", city: "Vysokie Tatry", country: "Slowakia" },
   { name: "Hostel Friendship", city: "Berlin", country: "Germany" },
@@ -262,6 +263,7 @@ const hotels = [
   { name: "Waikiki Resort Hotel", city: "Hawaii", country: "USA" },
   { name: "Puro Hotel", city: "Krakow", country: "Poland" },
   { name: "Asma Suites", city: "Santorini", country: "Greece" },
+  { name: "Waikiki Resort Hotel", city: "Hawaii", country: "USA" },
   { name: "Cityden Apartments", city: "Amsterdam", country: "Netherlands" },
   { name: "Mandarin Oriental", city: "Miami", country: "USA" },
   { name: "Concept Terrace Hotel", city: "Rome", country: "Italy" },
@@ -271,9 +273,12 @@ const hotels = [
   { name: "Apart Neptun", city: "Gdansk", country: "Poland" },
   { name: "Lux Isla", city: "Ibiza", country: "Spain" },
   { name: "Nox Hostel", city: "London", country: "UK" },
+  { name: "Nox Hostel", city: "London3333", country: "UK" },
+  { name: "Nox Hostel", city: "Londonsadasdasdasdasdssa", country: "UK" },
   { name: "Leonardo Vienna", city: "Vienna", country: "Austria" },
   { name: "Adagio Aparthotel", city: "Edinburgh", country: "UK" },
   { name: "Steigenberger Hotel", city: "Hamburg", country: "Germany" },
+  { name: "Waikiki Resort Hotel", city: "Hawaii", country: "USA" },
 ];
 
 // const search = (arr, find) => (result = arr.filter((item) => item.country === find || item.city === find || item.name === find));
@@ -283,6 +288,17 @@ const hotels = [
 // console.log(search(hotels, "Nox Hostel"));
 // console.log(search(hotels, "UK"));
 
+// const sorter = (arr) => {
+//   let map = new Map();
+//   for (let k in arr) {
+//     map.set(`${arr[k].country}`, [arr[k].city]);
+//   }
+//   let result = Object.fromEntries(map.entries());
+
+//   return result;
+// };
+
+// console.log(sorter(hotels));
 // Сопоставте страны с городами из массива:
 // дан массив;
 // напишите функцию, которая выберет все уникальные страны и сопоставит с ними города;
@@ -294,3 +310,17 @@ const hotels = [
 //    USA: ['Chicago', 'Hawaii', 'Miami'],
 //    Ukraine: ['Kyiv']
 // }
+
+const sorter = (arr) => {
+  let map = new Array();
+  for (let k in arr) {
+    if (map[arr[k].country] === undefined) {
+      map[arr[k].country] = new Array(arr[k].city);
+    } else {
+      map[arr[k].country] = [map[arr[k].country] + ", " + arr[k].city];
+    }
+  }
+  return map;
+};
+
+console.log(sorter(hotels));
