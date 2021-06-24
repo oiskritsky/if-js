@@ -359,3 +359,70 @@
 
 // console.log(deepEqual(obj1, obj2)); // true
 // console.log(deepEqual(obj1, obj3)); // false
+
+const studentsData = [
+  {
+    firstName: "Василий",
+    lastName: "Петров",
+    admissionYear: 2019,
+    courseName: "Java",
+  },
+  {
+    firstName: "Иван",
+    lastName: "Иванов",
+    admissionYear: 2018,
+    courseName: "JavaScript",
+  },
+  {
+    firstName: "Александр",
+    lastName: "Федоров",
+    admissionYear: 2017,
+    courseName: "Python",
+  },
+  {
+    firstName: "Николай",
+    lastName: "Петров",
+    admissionYear: 2019,
+    courseName: "Android",
+  },
+];
+
+// class User {
+//   constructor(name, surname) {
+//     this.name = name;
+//     this.surname = surname;
+//   }
+
+//   get fullName() {
+//     return `${this.name} ${this.surname}`;
+//   }
+// }
+
+// class Student extends User {
+//   constructor(name, surname, admissionYear, courseName) {
+//     super(name, surname);
+//     this.name = name;
+//     this.admissionYear = admissionYear;
+//     this.courseName = courseName;
+//   }
+//   get course() {
+//     let currentYear = new Date().getFullYear();
+//     return currentYear - this.admissionYear;
+//   }
+// }
+
+// let student = new Student("Олег", "Искрицкий", 2019, "JS");
+// console.log(student.course);
+
+class Students {
+  constructor(obj) {
+    let result = [];
+    obj.forEach((element) => {
+      result.push(`${element.firstName} ${element.lastName} - ${element.courseName}, ${element.admissionYear}`);
+    });
+    return result;
+  }
+}
+
+let student = new Students(studentsData);
+console.log(student);
