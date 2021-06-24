@@ -423,8 +423,6 @@ class Students {
   data = new Array();
 
   constructor(students) {
-    //
-
     students.forEach((element) => {
       this.data.push(new Student(element.firstName, element.lastName, element.admissionYear, element.courseName));
     });
