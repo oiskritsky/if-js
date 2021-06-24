@@ -402,6 +402,7 @@ class Student extends User {
   constructor(name, surname, admissionYear, courseName) {
     super(name, surname);
     this.name = name;
+    this.surname = surname;
     this.admissionYear = admissionYear;
     this.courseName = courseName;
   }
