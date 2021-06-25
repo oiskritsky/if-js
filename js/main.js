@@ -359,3 +359,91 @@
 
 // console.log(deepEqual(obj1, obj2)); // true
 // console.log(deepEqual(obj1, obj3)); // false
+
+const studentsData = [
+  {
+    firstName: "Василий",
+    lastName: "Петров",
+    admissionYear: 2019,
+    courseName: "Java",
+  },
+  {
+    firstName: "Иван",
+    lastName: "Иванов",
+    admissionYear: 2020,
+    courseName: "JavaScript",
+  },
+  {
+    firstName: "Александр",
+    lastName: "Федоров",
+    admissionYear: 2017,
+    courseName: "Python",
+  },
+  {
+    firstName: "Николай",
+    lastName: "Петров",
+    admissionYear: 2020,
+    courseName: "Android",
+  },
+];
+
+class User {
+  firstName = "";
+  lastName = "";
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+  get fullName() {
+    //геттер
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+class Student extends User {
+  admissionYear = 0;
+  courseName = "";
+  constructor(firstName, lastName, admissionYear, courseName) {
+    super(firstName, lastName);
+    this.admissionYear = admissionYear;
+    this.courseName = courseName;
+  }
+  //геттер
+  get courseNumber() {
+    let result = "0";
+    let course = new Date().getFullYear() - this.admissionYear;
+    if (course < 1) {
+      return (result = "1 курс");
+    }
+    return (result = `${course} курс`);
+  }
+}
+
+class Students {
+  data = new Array();
+
+  constructor(students) {
+    students.forEach((element) => {
+      this.data.push(new Student(element.firstName, element.lastName, element.admissionYear, element.courseName));
+    });
+  }
+
+  sortByCourseNumber(data) {
+    let currentYear = new Date().getFullYear();
+    return data.sort((a, b) => (currentYear - a.admissionYear > currentYear - b.admissionYear ? 1 : -1));
+  }
+
+  get getInfo() {
+    const data = this.sortByCourseNumber(this.data);
+    let result = [];
+
+    data.forEach((el) => {
+      result.push(`${el.fullName} - ${el.courseName}, ${el.courseNumber}`);
+    });
+
+    return result;
+  }
+}
+
+const students = new Students(studentsData);
+console.log(students.getInfo);
