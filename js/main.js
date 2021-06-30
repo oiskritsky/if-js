@@ -360,90 +360,173 @@
 // console.log(deepEqual(obj1, obj2)); // true
 // console.log(deepEqual(obj1, obj3)); // false
 
-const studentsData = [
-  {
-    firstName: "Василий",
-    lastName: "Петров",
-    admissionYear: 2019,
-    courseName: "Java",
-  },
-  {
-    firstName: "Иван",
-    lastName: "Иванов",
-    admissionYear: 2020,
-    courseName: "JavaScript",
-  },
-  {
-    firstName: "Александр",
-    lastName: "Федоров",
-    admissionYear: 2017,
-    courseName: "Python",
-  },
-  {
-    firstName: "Николай",
-    lastName: "Петров",
-    admissionYear: 2020,
-    courseName: "Android",
-  },
-];
+// const studentsData = [
+//   {
+//     firstName: "Василий",
+//     lastName: "Петров",
+//     admissionYear: 2019,
+//     courseName: "Java",
+//   },
+//   {
+//     firstName: "Иван",
+//     lastName: "Иванов",
+//     admissionYear: 2020,
+//     courseName: "JavaScript",
+//   },
+//   {
+//     firstName: "Александр",
+//     lastName: "Федоров",
+//     admissionYear: 2017,
+//     courseName: "Python",
+//   },
+//   {
+//     firstName: "Николай",
+//     lastName: "Петров",
+//     admissionYear: 2020,
+//     courseName: "Android",
+//   },
+// ];
 
-class User {
-  firstName = "";
-  lastName = "";
-  constructor(firstName, lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-  get fullName() {
-    //геттер
-    return this.firstName + " " + this.lastName;
-  }
-}
+// class User {
+//   firstName = "";
+//   lastName = "";
+//   constructor(firstName, lastName) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//   }
+//   get fullName() {
+//     //геттер
+//     return this.firstName + " " + this.lastName;
+//   }
+// }
 
-class Student extends User {
-  admissionYear = 0;
-  courseName = "";
-  constructor(firstName, lastName, admissionYear, courseName) {
-    super(firstName, lastName);
-    this.admissionYear = admissionYear;
-    this.courseName = courseName;
-  }
-  //геттер
-  get courseNumber() {
-    let result = "0";
-    let course = new Date().getFullYear() - this.admissionYear;
-    if (course < 1) {
-      return (result = "1 курс");
-    }
-    return (result = `${course} курс`);
-  }
-}
+// class Student extends User {
+//   admissionYear = 0;
+//   courseName = "";
+//   constructor(firstName, lastName, admissionYear, courseName) {
+//     super(firstName, lastName);
+//     this.admissionYear = admissionYear;
+//     this.courseName = courseName;
+//   }
+//   //геттер
+//   get courseNumber() {
+//     let result = "0";
+//     let course = new Date().getFullYear() - this.admissionYear;
+//     if (course < 1) {
+//       return (result = "1 курс");
+//     }
+//     return (result = `${course} курс`);
+//   }
+// }
 
-class Students {
-  data = new Array();
+// class Students {
+//   data = new Array();
 
-  constructor(students) {
-    students.forEach((element) => {
-      this.data.push(new Student(element.firstName, element.lastName, element.admissionYear, element.courseName));
-    });
-  }
+//   constructor(students) {
+//     students.forEach((element) => {
+//       this.data.push(new Student(element.firstName, element.lastName, element.admissionYear, element.courseName));
+//     });
+//   }
 
-  sortByCourseNumber(data) {
-    let currentYear = new Date().getFullYear();
-    return data.sort((a, b) => (currentYear - a.admissionYear > currentYear - b.admissionYear ? 1 : -1));
-  }
+//   sortByCourseNumber(data) {
+//     let currentYear = new Date().getFullYear();
+//     return data.sort((a, b) => (currentYear - a.admissionYear > currentYear - b.admissionYear ? 1 : -1));
+//   }
 
-  get getInfo() {
-    const data = this.sortByCourseNumber(this.data);
-    let result = [];
+//   get getInfo() {
+//     const data = this.sortByCourseNumber(this.data);
+//     let result = [];
 
-    data.forEach((el) => {
-      result.push(`${el.fullName} - ${el.courseName}, ${el.courseNumber}`);
-    });
+//     data.forEach((el) => {
+//       result.push(`${el.fullName} - ${el.courseName}, ${el.courseNumber}`);
+//     });
 
-    return result;
-  }
-}
+//     return result;
+//   }
+// }
 
-const students = new Students(studentsData);
-console.log(students.getInfo);
+// const students = new Students(studentsData);
+// console.log(students.getInfo);
+
+// const colors = ["magenta", "cyan", "firebrick", "springgreen", "skyblue"];
+// const element = document.getElementsByClassName("text");
+
+// const colorChange = function () {
+//   let i = 0;
+//   return function (e) {
+//     e.currentTarget.style.color = colors[i];
+//     console.log(this);
+//     ++i;
+//     if (i === colors.length) {
+//       i = 0;
+//     }
+//   };
+// };
+
+// const colorChanged = colorChange;
+
+// for (let i = 0; i < element.length; i++) {
+//   element[i].addEventListener("click", colorChanged());
+// }
+
+// const colors = {
+//   data: ["magenta", "cyan", "firebrick", "blue"],
+//   [Symbol.iterator]() {
+//     return {
+//       current: 0,
+//       data: this.data,
+
+//       next() {
+//         this.current++;
+
+//         console.log(this.current);
+//         return {
+//           done: this.current == this.data.length,
+//           value: { color: this.data[this.current], index: this.current },
+//         };
+//       },
+//     };
+//   },
+// };
+
+// for (let k of colors) {
+//   console.log(k);
+// }
+let colors = {
+  data: ["magenta", "cyan", "firebrick", "springgreen", "skyblue"],
+};
+
+colors[Symbol.iterator] = function () {
+  let index = 0;
+  let data = this.data;
+  let last = this.data.length;
+  return {
+    next() {
+      if (index < last) {
+        return {
+          done: false,
+          value: data[index++],
+        };
+      } else {
+        index = 0;
+        return {
+          done: false,
+          value: data[index++],
+        };
+      }
+    },
+  };
+};
+
+const changeColorP = (item) => {
+  return (e) => {
+    e.target.style.color = item.next().value;
+  };
+};
+
+const p = document.querySelectorAll("p");
+
+p.forEach((item) => {
+  let i = colors[Symbol.iterator]();
+  item.addEventListener("click", changeColorP(i));
+});
