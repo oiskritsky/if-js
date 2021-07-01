@@ -492,41 +492,118 @@
 // for (let k of colors) {
 //   console.log(k);
 // }
-let colors = {
-  data: ["magenta", "cyan", "firebrick", "springgreen", "skyblue"],
-};
 
-colors[Symbol.iterator] = function () {
-  let index = 0;
-  let data = this.data;
-  let last = this.data.length;
-  return {
-    next() {
-      if (index < last) {
-        return {
-          done: false,
-          value: data[index++],
-        };
-      } else {
-        index = 0;
-        return {
-          done: false,
-          value: data[index++],
-        };
-      }
-    },
-  };
-};
+////////////////////////////////////////////////
+////////////////lesson-9///////////////////////
+///////////////////////////////////////////////
 
-const changeColorP = (item) => {
-  return (e) => {
-    e.target.style.color = item.next().value;
-  };
-};
+// let colors = {
+//   data: ["magenta", "cyan", "firebrick", "springgreen", "skyblue"],
+// };
 
-const p = document.querySelectorAll("p");
+// colors[Symbol.iterator] = function () {
+//   let index = 0;
+//   let data = this.data;
+//   let last = this.data.length;
+//   return {
+//     next() {
+//       if (index < last) {
+//         return {
+//           done: false,
+//           value: data[index++],
+//         };
+//       } else {
+//         index = 0;
+//         return {
+//           done: false,
+//           value: data[index++],
+//         };
+//       }
+//     },
+//   };
+// };
 
-p.forEach((item) => {
-  let i = colors[Symbol.iterator]();
-  item.addEventListener("click", changeColorP(i));
+// const changeColorP = (item) => {
+//   return (e) => {
+//     e.target.style.color = item.next().value;
+//   };
+// };
+
+// const p = document.querySelectorAll("p");
+
+// p.forEach((item) => {
+//   let i = colors[Symbol.iterator]();
+//   item.addEventListener("click", changeColorP(i));
+// });
+//////////////////////////////////////
+////////////////lesson-10/////////////
+//////////////////////////////////////
+const data = [
+  {
+    name: "Hotel Leopold",
+    city: "Saint Petersburg",
+    country: "Russia",
+    imageUrl: "https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/hotel-leopold_mflelk.jpg",
+  },
+  {
+    name: "Apartment Sunshine",
+    city: "Santa  Cruz de Tenerife",
+    country: "Spain",
+    imageUrl: "https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/apartment-sunshine_vhdlel.jpg",
+  },
+  {
+    name: "Villa Kunerad",
+    city: "Vysokie Tatry",
+    country: "Slowakia",
+    imageUrl: "https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/villa-kunerad_gdbqgv.jpg",
+  },
+  {
+    name: "Hostel Friendship",
+    city: "Berlin",
+    country: "Germany",
+    imageUrl: "https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/hostel-friendship_aw6tn7.jpg",
+  },
+  {
+    name: "Radisson Blu Hotel",
+    city: "Kyiv",
+    country: "Ukraine",
+    imageUrl: "https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/radisson-blu-hotel_jwtowg.jpg",
+  },
+  {
+    name: "Paradise Hotel",
+    city: "Guadalupe",
+    country: "Mexico",
+    imageUrl: "https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/paradise-hotel_i6whae.jpg",
+  },
+  {
+    name: "Hotel Grindewald",
+    city: "Interlaken",
+    country: "Switzerland",
+    imageUrl: "https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/hotel-grindewald_zsjsmy.jpg",
+  },
+  {
+    name: "The Andaman Resort",
+    city: "Port Dickson",
+    country: "Malaysia",
+    imageUrl: "https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/the-andaman-resort_d2xksj.jpg",
+  },
+];
+
+const recList = document.querySelector(".recommend__list");
+data.forEach((el) => {
+  let li = document.createElement("li"); //create tag "li"
+  let img = document.createElement("img"); //create tag "img"
+  let hotelName = document.createElement("a"); //create tag "a"
+  let hotelLocation = document.createElement("p"); //create tag "p"
+
+  img.src = el.imageUrl; // add image source from array "data"
+  hotelName.href = "#"; //add link
+  hotelName.textContent += el.name; //add content(hotel name)
+  hotelLocation.textContent += el.city + ", " + el.country; //add content(location)
+
+  li.appendChild(img); //insert hotel's foto
+  li.appendChild(hotelName); //insert hotel's name
+  li.appendChild(hotelLocation); //insert hotel's location(city and country)
+
+  recList.appendChild(li); ///insert into DOM hotels list with img, name and location
 });
