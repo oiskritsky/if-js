@@ -589,21 +589,23 @@ const data = [
   },
 ];
 
-const recList = document.querySelector(".recommend__list");
 data.forEach((el) => {
+  //looking for an element in which we will insert the blocks
+  const recList = document.querySelector(".recommend__list");
+  // create block
   let li = document.createElement("li"); //create tag "li"
   let img = document.createElement("img"); //create tag "img"
   let hotelName = document.createElement("a"); //create tag "a"
   let hotelLocation = document.createElement("p"); //create tag "p"
-
+  //content block
   img.src = el.imageUrl; // add image source from array "data"
   hotelName.href = "#"; //add link
   hotelName.textContent += el.name; //add content(hotel name)
   hotelLocation.textContent += el.city + ", " + el.country; //add content(location)
-
+  //build block
   li.appendChild(img); //insert hotel's foto
   li.appendChild(hotelName); //insert hotel's name
   li.appendChild(hotelLocation); //insert hotel's location(city and country)
-
+  //insert block into DOM
   recList.appendChild(li); ///insert into DOM hotels list with img, name and location
 });
