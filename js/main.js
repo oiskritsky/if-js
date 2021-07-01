@@ -594,6 +594,7 @@ data.forEach((el) => {
   const recList = document.querySelector(".recommend__list");
   // create block
   let li = document.createElement("li"); //create tag "li"
+  li.classList.add("recommend__list-item");
   let img = document.createElement("img"); //create tag "img"
   let hotelName = document.createElement("a"); //create tag "a"
   let hotelLocation = document.createElement("p"); //create tag "p"
@@ -606,6 +607,11 @@ data.forEach((el) => {
   li.appendChild(img); //insert hotel's foto
   li.appendChild(hotelName); //insert hotel's name
   li.appendChild(hotelLocation); //insert hotel's location(city and country)
+
   //insert block into DOM
   recList.appendChild(li); ///insert into DOM hotels list with img, name and location
 });
+
+///////////////////////////////////////////////
+//////////////////////slider///////////////////
+///////////////////////////////////////////////
