@@ -521,6 +521,4 @@
 //   li.appendChild(hotelLocation); // insert hotel's location(city and country)
 
 //   // insert block into DOM
-//   recList.appendChild(li); /// insert into DOM hotels list with img, name and location
-// });
-
+//   recList.appendChild(li); /// insert into DOM hotels list with img, name and location});
