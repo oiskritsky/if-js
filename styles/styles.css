@@ -1,49 +1,55 @@
 /* roboto-100 - latin */
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 100;
-  src: local(""), url("../../fonts/roboto-v27-latin-100.woff2") format("woff2"), url("../../fonts/roboto-v27-latin-100.woff") format("woff");
+  src: local(''), url('../../fonts/roboto-v27-latin-100.woff2') format('woff2'),
+    url('../../fonts/roboto-v27-latin-100.woff') format('woff');
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* roboto-300 - latin */
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 300;
-  src: local(""), url("../../fonts/roboto-v27-latin-300.woff2") format("woff2"), url("../../fonts/roboto-v27-latin-300.woff") format("woff");
+  src: local(''), url('../../fonts/roboto-v27-latin-300.woff2') format('woff2'),
+    url('../../fonts/roboto-v27-latin-300.woff') format('woff');
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* roboto-regular - latin */
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: local(""), url("../../fonts/roboto-v27-latin-regular.woff2") format("woff2"), url("../../fonts/roboto-v27-latin-regular.woff") format("woff");
+  src: local(''), url('../../fonts/roboto-v27-latin-regular.woff2') format('woff2'),
+    url('../../fonts/roboto-v27-latin-regular.woff') format('woff');
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* roboto-500 - latin */
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  src: local(""), url("../../fonts/roboto-v27-latin-500.woff2") format("woff2"), url("../../fonts/roboto-v27-latin-500.woff") format("woff");
+  src: local(''), url('../../fonts/roboto-v27-latin-500.woff2') format('woff2'),
+    url('../../fonts/roboto-v27-latin-500.woff') format('woff');
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* roboto-700 - latin */
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  src: local(""), url("../../fonts/roboto-v27-latin-700.woff2") format("woff2"), url("../../fonts/roboto-v27-latin-700.woff") format("woff");
+  src: local(''), url('../../fonts/roboto-v27-latin-700.woff2') format('woff2'),
+    url('../../fonts/roboto-v27-latin-700.woff') format('woff');
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* roboto-900 - latin */
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  src: local(""), url("../../fonts/roboto-v27-latin-900.woff2") format("woff2"), url("../../fonts/roboto-v27-latin-900.woff") format("woff");
+  src: local(''), url('../../fonts/roboto-v27-latin-900.woff2') format('woff2'),
+    url('../../fonts/roboto-v27-latin-900.woff') format('woff');
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
@@ -60,7 +66,7 @@ html {
 }
 
 body {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-size: 16px;
   line-height: 1.2;
@@ -78,7 +84,7 @@ body {
   padding: 0px 104px;
 }
 .recommend__title {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   padding-top: 120px;
   padding-bottom: 100px;
@@ -129,4 +135,282 @@ body {
 
 .slider-buttons {
   text-align: center;
+}
+
+/* lesson 11 styles*/
+main {
+  background: url(../../img/background_main.svg) no-repeat;
+  background-size: cover;
+}
+
+.main__wrapper {
+  margin: 0px auto;
+  max-width: 1440px;
+  height: 100vh;
+}
+
+.main__title {
+  color: #ffffff;
+  font-size: 50px;
+  line-height: 60px;
+  margin-left: 100px;
+  margin-bottom: 100px;
+}
+
+.header {
+  margin: 0px auto;
+  padding-top: 51px;
+  margin-bottom: 200px;
+}
+
+.header__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  margin-left: 104px;
+  width: 205px;
+  height: 40px;
+  background-image: url(../../img/svg/logo.svg);
+}
+.header__logo a {
+  display: block;
+  height: 100%;
+}
+
+.header__nav {
+  margin-right: 104px;
+}
+.header__nav ul li:nth-child(3) {
+  display: blocks;
+  margin-left: 48px;
+  width: 30px;
+  height: 30px;
+  background-image: url(../../img/svg/day_mode.svg);
+}
+
+.header__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.header__item {
+  margin-right: 24px;
+}
+
+.header__item:nth-child(4) {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin-right: 0px;
+  background-image: url(../../img/svg/profile.svg);
+}
+
+.header__item:nth-child(4):active,
+.header__item:nth-child(4):hover {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin-right: 0px;
+  background-image: url(../../img/svg/profile_active.svg);
+}
+
+.header__link {
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+  position: relative;
+}
+.header__link:hover {
+  color: #ffffff;
+}
+
+.header__link::after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0%;
+  width: 100%;
+  height: 4px;
+  background-color: #f5bd41;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.header__link:hover::after,
+.header__link:focus::after,
+.header__link:active::after {
+  opacity: 1;
+  transform-origin: center center center;
+}
+
+.header__burger {
+  display: none;
+  margin-left: 12px;
+  width: 24px;
+  height: 16px;
+  background-image: url(../../img/svg/menu_mob.svg);
+}
+
+.form__desktop {
+  margin: 0px 100px 120px 100px;
+  margin-bottom: 120px;
+}
+
+.form-desktop__wrapper {
+  display: flex;
+}
+
+.form__desktop p {
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+.form__desktop input {
+  height: 65px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+.form__desktop .input__lable {
+  display: flex;
+  margin-left: 24px;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+.form__desktop .input__lable :nth-child(2) {
+  margin-left: 10rem;
+}
+.form__desktop .sbar__first {
+  flex: 2;
+}
+.form__desktop .sbar__first input::placeholder {
+  padding-left: 24px;
+}
+.form__desktop .sbar__second {
+  flex: 0.5;
+}
+.form__desktop .sbar__second div {
+  display: flex;
+}
+.form__desktop .sbar__third {
+  flex: 2;
+  border-radius: 10px;
+}
+.form__desktop .sbar__third input::placeholder {
+  text-align: center;
+}
+.form__desktop .sbar__third input:focus {
+  box-shadow: 0px 0px 0px 3px #f5bd41;
+}
+.form__desktop button {
+  flex: 1;
+  height: 65px;
+  background: #3077c6;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+}
+
+.form-desktop__wrapper {
+  display: flex;
+  border: none;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+
+.market__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px auto 120px;
+}
+
+/* sss */
+.header__people input::placeholder {
+  color: #383838;
+}
+
+.form-desktop-people__picker {
+  display: none;
+  background-color: #ffffff;
+  width: 259px;
+  height: auto;
+  position: relative;
+  top: 10px;
+  left: 720px;
+  border-radius: 8px;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 16px;
+  color: #333333;
+  padding: 22px;
+}
+.visible {
+  display: block;
+}
+
+.form-desktop-people__picker div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-desktop-people__picker div:nth-child(4) {
+  display: none;
+}
+
+.picker-people_count {
+  padding-bottom: 12px;
+}
+
+.form-desktop-people__picker span {
+  padding-bottom: 12px;
+}
+
+.form-desktop-people__picker button {
+  width: 30px;
+  height: 30px;
+  margin-top: 0px;
+  border: 1px solid #3077c6;
+  color: #3077c6;
+  background-color: #ffffff;
+}
+
+.picker__children {
+  padding-bottom: 12px;
+}
+
+.picker__rooms {
+  padding-bottom: 12px;
+}
+
+.form-desktop-people__picker input {
+  width: 48px;
+  height: 30px;
+  margin-top: 0px;
+  border: none;
+  text-align: center;
+}
+
+.picker__age {
+  flex-direction: column;
+}
+.picker__age span {
+  padding-top: 16px;
+  font-size: 12px;
+}
+.picker__age select {
+  margin-top: 12px;
+  display: block;
+  height: 30px;
+  width: 99px;
+  font-size: 12px;
+  border: 1px solid #3077c6;
 }
