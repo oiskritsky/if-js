@@ -135,9 +135,35 @@ body {
 
 .slider-buttons {
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+  top: 150px;
 }
+.btn-prev {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-image: url(./../img/svg/arrow.svg);
+  background-size: 40px;
+  transform: scale(-1, 1);
+}
+.btn-next {
+  position: relative;
 
-/* lesson 11 styles*/
+  z-index: 1;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-image: url(./../img/svg/arrow.svg);
+  background-size: 40px;
+}
+/* lesson 11 styles
 main {
   background: url(../../img/background_main.svg) no-repeat;
   background-size: cover;
@@ -333,7 +359,7 @@ main {
   margin: 0px auto 120px;
 }
 
-/* sss */
+
 .header__people input::placeholder {
   color: #383838;
 }
@@ -413,4 +439,4 @@ main {
   width: 99px;
   font-size: 12px;
   border: 1px solid #3077c6;
-}
+} */
