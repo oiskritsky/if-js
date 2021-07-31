@@ -1,7 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable comma-dangle */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-unused-vars */
 /// /////////////////////
 const pickerForm = document.querySelector('.form-desktop-people__picker');
 const peoplePicker = document.querySelector('.people-picker');
@@ -20,6 +16,11 @@ const minusAdults = document.querySelector('.picker__adults button.minus');
 const minusChildren = document.querySelector('.picker__children button.minus');
 const minusRooms = document.querySelector('.picker__rooms button.minus');
 /// ///////////////////
+const styleBorderDisable = '1px solid #CECECE';
+const styleColorDisable = '#CECECE';
+const styleBorderEnable = '1px solid #3077c6';
+const styleColorEnable = '#3077c6';
+/// ///////////////////////
 let adultsCount = 0;
 let childrenCount = 0;
 let roomsCount = 0;
@@ -58,25 +59,25 @@ const clickChildren = (e) => {
   if (childrenInput.value <= 0) {
     childrenCount = 0;
     childrenInput.value = 0;
-    minusChildren.style.border = '1px solid #CECECE';
-    minusChildren.style.color = '#CECECE';
+    minusChildren.style.border = styleBorderDisable;
+    minusChildren.style.color = styleColorDisable;
     minusChildren.disabled;
     minusChildren.removeEventListener('click', clickChildren, true);
   } else {
-    minusChildren.style.border = '1px solid #3077c6';
-    minusChildren.style.color = '#3077c6';
+    minusChildren.style.border = styleBorderEnable;
+    minusChildren.style.color = styleColorEnable;
   }
   /// /////////////////////////////
   if (childrenInput.value >= 10) {
     childrenCount = 10;
     childrenInput.value = 10;
-    plusChildren.style.border = '1px solid #CECECE';
-    plusChildren.style.color = '#CECECE';
+    plusChildren.style.border = styleBorderDisable;
+    plusChildren.style.color = styleColorDisable;
     plusChildren.disabled;
     plusChildren.removeEventListener('click', clickChildren, true);
   } else {
-    plusChildren.style.border = '1px solid #3077c6';
-    plusChildren.style.color = '#3077c6';
+    plusChildren.style.border = styleBorderEnable;
+    plusChildren.style.color = styleColorEnable;
   }
   /// /////////////////////////////
   setValue();
@@ -130,22 +131,22 @@ const clickAdults = (e) => {
   if (adultsInput.value <= 0) {
     adultsCount = 0;
     adultsInput.value = 0;
-    minusAdults.style.border = '1px solid #CECECE';
-    minusAdults.style.color = '#CECECE';
+    minusAdults.style.border = styleBorderDisable;
+    minusAdults.style.color = styleColorDisable;
     minusAdults.disabled;
   } else {
-    minusAdults.style.border = '1px solid #3077c6';
-    minusAdults.style.color = '#3077c6';
+    minusAdults.style.border = styleBorderEnable;
+    minusAdults.style.color = styleColorEnable;
   }
   if (adultsInput.value >= 30) {
     adultsCount = 30;
     adultsInput.value = 30;
-    plusAdults.style.border = '1px solid #CECECE';
-    plusAdults.style.color = '#CECECE';
+    plusAdults.style.border = styleBorderDisable;
+    plusAdults.style.color = styleColorDisable;
     plusAdults.disabled;
   } else {
-    plusAdults.style.border = '1px solid #3077c6';
-    plusAdults.style.color = '#3077c6';
+    plusAdults.style.border = styleBorderEnable;
+    plusAdults.style.color = styleColorEnable;
   }
 
   setValue();
@@ -168,22 +169,22 @@ const clickRooms = (e) => {
   if (roomsInput.value <= 0) {
     roomsCount = 0;
     roomsInput.value = 0;
-    minusRooms.style.border = '1px solid #CECECE';
-    minusRooms.style.color = '#CECECE';
+    minusRooms.style.border = styleBorderDisable;
+    minusRooms.style.color = styleColorDisable;
     minusRooms.disabled;
   } else {
-    minusRooms.style.border = '1px solid #3077c6';
-    minusRooms.style.color = '#3077c6';
+    minusRooms.style.border = styleBorderEnable;
+    minusRooms.style.color = styleColorEnable;
   }
   if (roomsInput.value >= 30) {
     roomsCount = 30;
     roomsInput.value = 30;
-    plusRooms.style.border = '1px solid #CECECE';
-    plusRooms.style.color = '#CECECE';
+    plusRooms.style.border = styleBorderDisable;
+    plusRooms.style.color = styleColorDisable;
     plusRooms.disabled;
   } else {
-    plusRooms.style.border = '1px solid #3077c6';
-    plusRooms.style.color = '#3077c6';
+    plusRooms.style.border = styleBorderEnable;
+    plusRooms.style.color = styleColorEnable;
   }
 
   setValue();
