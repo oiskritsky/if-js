@@ -57,27 +57,25 @@ const clickChildren = (e) => {
   }
   /// /////////////////////////////
   if (childrenInput.value <= 0) {
-    childrenCount = 0;
-    childrenInput.value = 0;
     minusChildren.style.border = styleBorderDisable;
     minusChildren.style.color = styleColorDisable;
-    minusChildren.disabled;
+    minusChildren.disabled = true;
     minusChildren.removeEventListener('click', clickChildren, true);
   } else {
     minusChildren.style.border = styleBorderEnable;
     minusChildren.style.color = styleColorEnable;
+    minusChildren.disabled = false;
   }
   /// /////////////////////////////
   if (childrenInput.value >= 10) {
-    childrenCount = 10;
-    childrenInput.value = 10;
     plusChildren.style.border = styleBorderDisable;
     plusChildren.style.color = styleColorDisable;
-    plusChildren.disabled;
+    plusChildren.disabled = true;
     plusChildren.removeEventListener('click', clickChildren, true);
   } else {
     plusChildren.style.border = styleBorderEnable;
     plusChildren.style.color = styleColorEnable;
+    plusChildren.disabled = false;
   }
   /// /////////////////////////////
   setValue();
@@ -90,16 +88,16 @@ minusChildren.addEventListener('click', clickChildren);
 const childrenAgePickerShow = (e) => {
   if (childrenInput.value >= 1) {
     childrenAgePicker.style.display = 'block';
-  }
-  for (let i = childrenInput.value; i >= 2 && i <= 10; i += 1) {
-    if (i < 10) {
-      const selectClone = childrenAgePickerSelect.cloneNode(true);
-      selectClone.id = '';
-      selectClone.classList = 'inner';
-      childrenAgePickerSelect.parentNode.insertBefore(
-        selectClone,
-        childrenAgePickerSelect.nextSibling
-      );
+    for (let i = childrenInput.value; i >= 2 && i < 11; i += 1) {
+      if (i < 11) {
+        const selectClone = childrenAgePickerSelect.cloneNode(true);
+        selectClone.id = '';
+        selectClone.classList = 'inner';
+        childrenAgePickerSelect.parentNode.insertBefore(
+          selectClone,
+          childrenAgePickerSelect.nextSibling
+        );
+      }
     }
   }
 };
@@ -129,24 +127,22 @@ const clickAdults = (e) => {
   }
 
   if (adultsInput.value <= 0) {
-    adultsCount = 0;
-    adultsInput.value = 0;
     minusAdults.style.border = styleBorderDisable;
     minusAdults.style.color = styleColorDisable;
-    minusAdults.disabled;
+    minusAdults.disabled = true;
   } else {
     minusAdults.style.border = styleBorderEnable;
     minusAdults.style.color = styleColorEnable;
+    minusAdults.disabled = false;
   }
   if (adultsInput.value >= 30) {
-    adultsCount = 30;
-    adultsInput.value = 30;
     plusAdults.style.border = styleBorderDisable;
     plusAdults.style.color = styleColorDisable;
-    plusAdults.disabled;
+    plusAdults.disabled = true;
   } else {
     plusAdults.style.border = styleBorderEnable;
     plusAdults.style.color = styleColorEnable;
+    plusAdults.disabled = false;
   }
 
   setValue();
@@ -167,24 +163,22 @@ const clickRooms = (e) => {
   }
 
   if (roomsInput.value <= 0) {
-    roomsCount = 0;
-    roomsInput.value = 0;
     minusRooms.style.border = styleBorderDisable;
     minusRooms.style.color = styleColorDisable;
-    minusRooms.disabled;
+    minusRooms.disabled = true;
   } else {
     minusRooms.style.border = styleBorderEnable;
     minusRooms.style.color = styleColorEnable;
+    minusRooms.disabled = false;
   }
   if (roomsInput.value >= 30) {
-    roomsCount = 30;
-    roomsInput.value = 30;
     plusRooms.style.border = styleBorderDisable;
     plusRooms.style.color = styleColorDisable;
-    plusRooms.disabled;
+    plusRooms.disabled = true;
   } else {
     plusRooms.style.border = styleBorderEnable;
     plusRooms.style.color = styleColorEnable;
+    plusRooms.disabled = false;
   }
 
   setValue();
