@@ -124,6 +124,12 @@ body {
   color: #3077c6;
 }
 
+.recommend__list li img {
+  width: 276px;
+  height: 276px;
+  object-fit: cover;
+}
+
 .recommend__list li p {
   font-family: Roboto;
   font-style: normal;
