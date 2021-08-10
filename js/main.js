@@ -77,7 +77,7 @@ const clickChildren = (e) => {
     plusChildren.style.color = styleColorEnable;
     plusChildren.disabled = false;
   }
-  /// /////////////////////////////
+  /// //////////////////////////////
   setValue();
 };
 
