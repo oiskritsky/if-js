@@ -3,7 +3,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 100;
-  src: local(''), url('../fonts/roboto-v27-latin-100.woff2') format('woff2'),
+  src: local(''), url('../../fonts/roboto-v27-latin-100.woff2') format('woff2'),
     url('../../fonts/roboto-v27-latin-100.woff') format('woff');
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
@@ -12,7 +12,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 300;
-  src: local(''), url('../fonts/roboto-v27-latin-300.woff2') format('woff2'),
+  src: local(''), url('../../fonts/roboto-v27-latin-300.woff2') format('woff2'),
     url('../../fonts/roboto-v27-latin-300.woff') format('woff');
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
@@ -21,7 +21,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: local(''), url('../fonts/roboto-v27-latin-regular.woff2') format('woff2'),
+  src: local(''), url('../../fonts/roboto-v27-latin-regular.woff2') format('woff2'),
     url('../../fonts/roboto-v27-latin-regular.woff') format('woff');
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
@@ -30,7 +30,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  src: local(''), url('../fonts/roboto-v27-latin-500.woff2') format('woff2'),
+  src: local(''), url('../../fonts/roboto-v27-latin-500.woff2') format('woff2'),
     url('../../fonts/roboto-v27-latin-500.woff') format('woff');
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
@@ -39,7 +39,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  src: local(''), url('../fonts/roboto-v27-latin-700.woff2') format('woff2'),
+  src: local(''), url('../../fonts/roboto-v27-latin-700.woff2') format('woff2'),
     url('../../fonts/roboto-v27-latin-700.woff') format('woff');
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
@@ -48,7 +48,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  src: local(''), url('../fonts/roboto-v27-latin-900.woff2') format('woff2'),
+  src: local(''), url('../../fonts/roboto-v27-latin-900.woff2') format('woff2'),
     url('../../fonts/roboto-v27-latin-900.woff') format('woff');
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
@@ -113,6 +113,12 @@ body {
   padding: 0px 16px 0px 16px;
   width: calc(25% - 16px);
 }
+
+.recommend__list li img {
+  width: 276px;
+  height: 276px
+}
+
 .recommend__list li a {
   padding: 24px 0px 24px;
   text-decoration: none;
@@ -135,11 +141,36 @@ body {
 
 .slider-buttons {
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+  top: 150px;
 }
-
-/* lesson 11 styles*/
+.btn-prev {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-image: url(./../img/svg/arrow.svg);
+  background-size: 40px;
+  transform: scale(-1, 1);
+}
+.btn-next {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-image: url(./../img/svg/arrow.svg);
+  background-size: 40px;
+}
+/* lesson 11 styles
 main {
-  background: url(../img/background_main.svg) no-repeat;
+  background: url(../../img/background_main.svg) no-repeat;
   background-size: cover;
 }
 
@@ -174,7 +205,7 @@ main {
   margin-left: 104px;
   width: 205px;
   height: 40px;
-  background-image: url(../img/svg/logo.svg);
+  background-image: url(../../img/svg/logo.svg);
 }
 .header__logo a {
   display: block;
@@ -189,7 +220,7 @@ main {
   margin-left: 48px;
   width: 30px;
   height: 30px;
-  background-image: url(../img/svg/day_mode.svg);
+  background-image: url(../../img/svg/day_mode.svg);
 }
 
 .header__list {
@@ -207,7 +238,7 @@ main {
   width: 40px;
   height: 40px;
   margin-right: 0px;
-  background-image: url(../img/svg/profile.svg);
+  background-image: url(../../img/svg/profile.svg);
 }
 
 .header__item:nth-child(4):active,
@@ -216,7 +247,7 @@ main {
   width: 40px;
   height: 40px;
   margin-right: 0px;
-  background-image: url(../img/svg/profile_active.svg);
+  background-image: url(../../img/svg/profile_active.svg);
 }
 
 .header__link {
@@ -256,7 +287,7 @@ main {
   margin-left: 12px;
   width: 24px;
   height: 16px;
-  background-image: url(../img/svg/menu_mob.svg);
+  background-image: url(../../img/svg/menu_mob.svg);
 }
 
 .form__desktop {
@@ -333,7 +364,7 @@ main {
   margin: 0px auto 120px;
 }
 
-/* sss */
+
 .header__people input::placeholder {
   color: #383838;
 }
@@ -374,15 +405,7 @@ main {
   padding-bottom: 12px;
 }
 
-.form-desktop-people__picker .minus {
-  width: 30px;
-  height: 30px;
-  margin-top: 0px;
-  border: 1px solid #cecece;
-  color: #cecece;
-  background-color: #ffffff;
-}
-.form-desktop-people__picker .plus {
+.form-desktop-people__picker button {
   width: 30px;
   height: 30px;
   margin-top: 0px;
@@ -421,4 +444,4 @@ main {
   width: 99px;
   font-size: 12px;
   border: 1px solid #3077c6;
-}
+} */
