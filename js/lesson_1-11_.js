@@ -539,7 +539,11 @@
 // const minusAdults = document.querySelector('.picker__adults button.minus');
 // const minusChildren = document.querySelector('.picker__children button.minus');
 // const minusRooms = document.querySelector('.picker__rooms button.minus');
-// /// ///////////////////
+// /// /////////////////////
+// minusAdults.disabled = true;
+// minusChildren.disabled = true;
+// minusRooms.disabled = true;
+// /// /////////////////////
 // const styleBorderDisable = '1px solid #CECECE';
 // const styleColorDisable = '#CECECE';
 // const styleBorderEnable = '1px solid #3077c6';
@@ -548,7 +552,7 @@
 // let adultsCount = 0;
 // let childrenCount = 0;
 // let roomsCount = 0;
-// /// ////////////////////
+// /// //////////////////////
 
 // // Установка значений в placeholder
 // const setValue = () => {
@@ -706,3 +710,7 @@
 //   }
 
 //   setValue();
+// };
+
+// plusRooms.addEventListener('click', clickRooms);
+// minusRooms.addEventListener('click', clickRooms);
