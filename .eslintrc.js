@@ -10,17 +10,11 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    'comma-dangle': [
-      'error',
-      {
-        arrays: 'never',
-        objects: 'never',
-        imports: 'never',
-        exports: 'never',
-        functions: 'never'
-      }
-    ],
+    'comma-dangle': 'off',
     'no-unused-expressions': 'off',
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    'import/prefer-default-export': 'off',
+    'import/extensions': 'off',
+    'no-console': 'off'
   }
 };
