@@ -1,11 +1,20 @@
 import { loadSlider } from './slider.js';
 
-const getHotelsData = async (url) => {
-  const getHotels = await fetch(url)
+const responseHotelsData = async (url) =>
+  await fetch(url)
     .then((response) => response.json())
     .then((data) => data)
     .catch((err) => console.log(err));
-  return getHotels;
+
+const getHotelsData = async (url) => {
+  const preLoadedData = sessionStorage.getItem('cacheHotels');
+  if (!preLoadedData) {
+    const hotelsData = await responseHotelsData(url, {});
+    sessionStorage.setItem('cacheHotels', JSON.stringify(hotelsData));
+
+    return hotelsData;
+  }
+  return JSON.parse(preLoadedData);
 };
 
 const loadData = async () => {
