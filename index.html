@@ -9,12 +9,12 @@
     <title>My First Step in ECMAScript</title>
   </head>
   <body>
-    <!-- <main class="main">
+    <main class="main">
             <div class="main__wrapper">
                 <header class="header">
                     <div class="header__wrapper">
                         <div class="header__logo">
-                            <a href="../Triphouse-project/index.html" class="header__logo-link"></a>
+                            <a href="index.html" class="header__logo-link"></a>
                         </div>
                         <nav class="header__nav">
                             <ul class="header__list">
@@ -45,8 +45,7 @@
                 <form action="" class="form__desktop">
                     <div class="input__lable">
                         <label for="search">Your destination or hotel name</label>
-                        <label for="in">Check-in</label>
-                        -
+                        <label for="in">Check-in-</label>
                         <label for="out">Check-out</label>
                     </div>
                     <section class="form-desktop__wrapper">
@@ -65,9 +64,14 @@
                             </div>
                         </div>
                         <div class="sbar__third">
-                            <input type="text" class="people-picker" placeholder="">
+                            <input
+                                type="text"
+                                name="filter"
+                                class="people-picker"
+                                placeholder=""
+                            >
                         </div>
-                        <button>Search</button>
+                        <button id="sendForm" type="submit">Search</button>
                     </section>
                     <div class="form-desktop-people__picker">
                         <div class="picker__adults">
@@ -123,47 +127,32 @@
                                 <label for="age">What is the age of the child you’re travelling with?</label>
                             </span>
                             <select id="age">
-                                <option>0 years old</option>
-                                <option>1 years old</option>
-                                <option>2 years old</option>
-                                <option>3 years old</option>
-                                <option>4 years old</option>
-                                <option>5 years old</option>
-                                <option>6 years old</option>
-                                <option>7 years old</option>
-                                <option>8 years old</option>
-                                <option>9 years old</option>
-                                <option>10 years old</option>
-                                <option>11 years old</option>
-                                <option>12 years old</option>
-                                <option>13 years old</option>
-                                <option>14 years old</option>
-                                <option>15 years old</option>
-                                <option>16 years old</option>
-                                <option>17 years old</option>
+                                <option value="0">0 years old</option>
+                                <option value="1">1 years old</option>
+                                <option value="2">2 years old</option>
+                                <option value="3">3 years old</option>
+                                <option value="4">4 years old</option>
+                                <option value="5">5 years old</option>
+                                <option value="6">6 years old</option>
+                                <option value="7">7 years old</option>
+                                <option value="8">8 years old</option>
+                                <option value="9">9 years old</option>
+                                <option value="10">10 years old</option>
+                                <option value="11">11 years old</option>
+                                <option value="12">12 years old</option>
+                                <option value="13">13 years old</option>
+                                <option value="14">14 years old</option>
+                                <option value="15">15 years old</option>
+                                <option value="16">16 years old</option>
+                                <option value="17">17 years old</option>
                             </select>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </form> -->
-    <!-- <form action="" class="form__mobile">
-				<div class="form-mobile__destination">
-					<input type="text" placeholder="Your destination or hotel name" />
-				</div>
-				<div class="date__mobile">
-					<input type="date" name="Check-in_mob" id="in_mob" />
-					<input type="date" name="Check-out_mob" id="out_mob" />
-				</div>
-				<div class="form-mobile__child">
-					<input type="text" placeholder="Adults - Children - Rooms" />
-				</div>
-				<div class="button__mob">
-					<button>Search</button>
-				</div>
-			</form>
-     <div class="market__links">
+    </form>
+    <div class="market__links">
         <p>
             <img src="./img/svg/google-play-ico.svg" alt="google play market">
         </p>
@@ -172,8 +161,8 @@
         </p>
     </div>
 </div>
-</main> -->
-    <section class="recommend">
+</main>
+    <!-- <section class="recommend">
       <div class="recommend__wrapper">
         <div class="recommend__title">
           <h2>Homes guests loves</h2>
@@ -186,8 +175,29 @@
           <ul class="recommend__list"></ul>
         </div>
       </div>
+    </section> -->
+    
+
+    <section class="available">
+      <div class="available__wrapper">
+        <div class="available__title">
+          <h2>Available hotels</h2>
+        </div>
+        <div class="slider-buttons-available">
+          <button class="btn-prev-available"></button>
+          <button class="btn-next-available"></button>
+        </div>
+        <div class="available-list__wrapper">
+          <ul class="available__list"></ul>
+        </div>
+      </div>
     </section>
+
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/slider.js"></script>
+    <script type="module" src="./js/slider_availableBlock.js"></script>
+    <script type="module" src="./js/sorter.js"></script>
+    <script type="module" src="./js/filter.js"></script>
+    
   </body>
 </html>

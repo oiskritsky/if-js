@@ -1,12 +1,12 @@
-const loadSliderHotels = () => {
+const loadSliderAvailableHotels = async () => {
   let position = 0;
   const slidesToShow = 4;
   const slidesToScroll = 1;
-  const container = document.querySelector(`.recommend-list__wrapper`);
-  const track = document.querySelector('.recommend__list');
-  const btnPrev = document.querySelector('.btn-prev');
-  const btnNext = document.querySelector('.btn-next');
-  const items = document.querySelectorAll('.recommend__list-item');
+  const container = document.querySelector(`.available-list__wrapper`);
+  const track = document.querySelector('.available__list');
+  const btnPrev = document.querySelector('.btn-prev-available');
+  const btnNext = document.querySelector('.btn-next-available');
+  const items = document.querySelectorAll('.available__list-item');
   const itemCount = items.length;
   const itemWidth = container.clientWidth / slidesToShow;
   const movePosition = slidesToScroll * itemWidth;
@@ -39,4 +39,4 @@ const loadSliderHotels = () => {
   btn();
 };
 
-export { loadSliderHotels };
+export { loadSliderAvailableHotels };
