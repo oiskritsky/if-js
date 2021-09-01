@@ -5,6 +5,7 @@ const filter = async () => {
   const pickerForm = document.querySelector('.form-desktop-people__picker');
   const peoplePicker = document.querySelector('.people-picker');
   const sendFormButton = document.querySelector('#sendForm');
+  const available = document.querySelector('.available');
 
   const childrenAgePicker = document.querySelector('.picker__age');
   const childrenAgePickerSelect = document.querySelector('#age');
@@ -44,26 +45,30 @@ const filter = async () => {
     minusRooms.style.color = styleColorDisable;
   };
 
-  disableButtonOnLoad();
+  adultsInput.value = 0;
+  childrenInput.value = 0;
+  roomsInput.value = 0;
 
-  let adultsCount = 0;
-  let childrenCount = 0;
-  let roomsCount = 0;
-
-  // Установка значений в placeholder
-  const setPlaceholder = () => {
-    peoplePicker.setAttribute(
-      'placeholder',
-      `Adults - ${adultsCount} Child - ${childrenCount} Rooms - ${roomsCount}`
-    );
-  };
-  setPlaceholder();
-
-  // Установка значений в placeholder
   const setValue = () => {
+    if (adultsInput.value > 30) {
+      adultsInput.value = 30;
+    } else if (adultsInput.value < 0) {
+      adultsInput.value = 0;
+    }
+    if (childrenInput.value > 10) {
+      childrenInput.value = 10;
+    } else if (childrenInput.value < 0) {
+      childrenInput.value = 0;
+    }
+    if (roomsInput.value > 30) {
+      roomsInput.value = 30;
+    } else if (roomsInput.value < 0) {
+      roomsInput.value = 0;
+    }
+
     peoplePicker.setAttribute(
       'value',
-      `Adults - ${adultsCount} Child - ${childrenCount} Rooms - ${roomsCount}`
+      `Adults - ${adultsInput.value} Child - ${childrenInput.value} Rooms - ${roomsInput.value}`
     );
   };
   setValue();
@@ -71,6 +76,7 @@ const filter = async () => {
   // присвоение класса нашему блоку picker при выполнении
   const setPickerVisibleClass = () => {
     pickerForm.classList.toggle('visible');
+    disableButtonOnLoad();
   };
 
   // присвоение класса нашему блоку picker при клике
@@ -80,11 +86,9 @@ const filter = async () => {
     e.preventDefault(); // отключаем дефолтное поведение браузера при клике по button
 
     if (e.target.classList.contains('plus')) {
-      childrenCount += 1;
-      childrenInput.value = childrenCount;
+      childrenInput.value++;
     } else if (e.target.classList.contains('minus')) {
-      childrenCount -= 1;
-      childrenInput.value = childrenCount;
+      childrenInput.value--;
     }
 
     if (childrenInput.value <= 0) {
@@ -114,6 +118,7 @@ const filter = async () => {
 
   plusChildren.addEventListener('click', clickChildren);
   minusChildren.addEventListener('click', clickChildren);
+  childrenInput.addEventListener('input', clickChildren);
 
   const childrenAgePickerShow = (e) => {
     if (childrenInput.value >= 1) {
@@ -148,11 +153,9 @@ const filter = async () => {
     e.preventDefault(); // отключаем дефолтное поведение браузера при клике по button
 
     if (e.target.classList.contains('plus')) {
-      adultsCount += 1;
-      adultsInput.value = adultsCount;
+      adultsInput.value++;
     } else if (e.target.classList.contains('minus')) {
-      adultsCount -= 1;
-      adultsInput.value = adultsCount;
+      adultsInput.value--;
     }
 
     if (adultsInput.value <= 0) {
@@ -179,16 +182,15 @@ const filter = async () => {
 
   plusAdults.addEventListener('click', clickAdults);
   minusAdults.addEventListener('click', clickAdults);
+  adultsInput.addEventListener('input', clickAdults);
 
   const clickRooms = (e) => {
     e.preventDefault(); // отключаем дефолтное поведение браузера при клике по button
 
     if (e.target.classList.contains('plus')) {
-      roomsCount += 1;
-      roomsInput.value = roomsCount;
+      roomsInput.value++;
     } else if (e.target.classList.contains('minus')) {
-      roomsCount -= 1;
-      roomsInput.value = roomsCount;
+      roomsInput.value--;
     }
 
     if (roomsInput.value <= 0) {
@@ -215,6 +217,7 @@ const filter = async () => {
 
   plusRooms.addEventListener('click', clickRooms);
   minusRooms.addEventListener('click', clickRooms);
+  roomsInput.addEventListener('input', clickRooms);
 
   const childrenAgesArr = [];
   const childrenStr = childrenAgesArr.toString();
@@ -231,33 +234,43 @@ const filter = async () => {
 
   const loadAvailable = async (e) => {
     sendForm(e);
-    // document.querySelector('.available__list');
-    const recList = document.querySelector('.available__list');
-    const searchInput = document.querySelector('#search');
-    const urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}&adults=${adultsInput.value}&children=${childrenStr}&rooms=${roomsInput.value}`;
+    const availableUL = document.querySelector('.available__list');
 
-    const availableHotels = await availableHotelsData(urlAvailableHotel);
-    const sortedAvailableHotels = bubbleSort(availableHotels);
+    if (!(availableUL.childNodes.length === 0)) {
+      availableUL.innerHTML = '';
+    } else {
+      const searchInput = document.querySelector('#search');
+      const urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}&adults=${adultsInput.value}&children=${childrenStr}&rooms=${roomsInput.value}`;
+      // console.log(childrenStr);
+      const availableHotels = await availableHotelsData(urlAvailableHotel);
+      const sortedAvailableHotels = bubbleSort(availableHotels);
+      if (!(sortedAvailableHotels.length === 0)) {
+        available.classList.add('visible');
+        sortedAvailableHotels.forEach((el) => {
+          const li = document.createElement('li');
+          const img = document.createElement('img');
+          const hotelName = document.createElement('a');
+          const hotelLocation = document.createElement('p');
 
-    sortedAvailableHotels.forEach((el) => {
-      //
-      const li = document.createElement('li');
-      const img = document.createElement('img');
-      const hotelName = document.createElement('a');
-      const hotelLocation = document.createElement('p');
-      li.classList.add('available__list-item'); //
-      img.src = el.imageUrl;
-      hotelName.href = '#';
-      hotelName.textContent += el.name;
-      hotelLocation.textContent += `${el.city}, ${el.country}`;
+          li.classList.add('available__list-item');
+          img.src = el.imageUrl;
+          hotelName.href = '#';
+          hotelName.textContent += el.name;
+          hotelLocation.textContent += `${el.city}, ${el.country}`;
 
-      li.appendChild(img);
-      li.appendChild(hotelName);
-      li.appendChild(hotelLocation);
+          li.appendChild(img);
+          li.appendChild(hotelName);
+          li.appendChild(hotelLocation);
 
-      recList.appendChild(li);
-    });
-    await loadSliderAvailableHotels();
+          availableUL.appendChild(li);
+
+          availableUL.scrollIntoView({ behavior: 'smooth' }); // прокрутка страницы ( плавная )
+        });
+      } else {
+        available.classList.remove('visible');
+      }
+      await loadSliderAvailableHotels();
+    }
   };
 
   sendFormButton.addEventListener('click', loadAvailable);

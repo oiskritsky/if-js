@@ -387,9 +387,7 @@ main {
   color: #333333;
   padding: 22px;
 }
-.visible {
-  display: block;
-}
+
 
 .form-desktop-people__picker div {
   display: flex;
@@ -450,6 +448,7 @@ main {
 }
 
 .available {
+  display: none;
   background-color: #eaf0f9;
   height: 100vh;
 }
@@ -542,4 +541,8 @@ main {
   border: none;
   background-image: url(./../img/svg/arrow.svg);
   background-size: 40px;
+}
+
+.visible {
+  display: block;
 }
