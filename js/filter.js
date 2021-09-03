@@ -236,7 +236,9 @@ const filter = async () => {
 
     if (!(availableUL.childNodes.length === 0)) {
       availableUL.innerHTML = '';
-    } else {
+    }
+
+    if (availableUL.childNodes.length === 0) {
       const urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}&adults=${adultsInput.value}&children=${childrens}&rooms=${roomsInput.value}`;
       console.log(urlAvailableHotel);
       const availableHotels = await availableHotelsData(urlAvailableHotel);
