@@ -19,6 +19,7 @@ module.exports = {
     'no-return-await': 'off',
     'consistent-return': 'off',
     'no-plusplus': 'off',
-    'no-alert': 'off'
+    'no-alert': 'off',
+    'eqeqeq': 'off'
   }
 };

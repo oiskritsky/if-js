@@ -233,14 +233,23 @@ const filter = async () => {
 
   const loadAvailable = async (e) => {
     const childrens = sendForm(e).toString();
-
+    let urlAvailableHotel = '';
     if (!(availableUL.childNodes.length === 0)) {
       availableUL.innerHTML = '';
     }
-
     if (availableUL.childNodes.length === 0) {
-      const urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}&adults=${adultsInput.value}&children=${childrens}&rooms=${roomsInput.value}`;
-      console.log(urlAvailableHotel);
+      if (childrens === '' && adultsInput.value == 0 && roomsInput.value == 0) {
+        urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}`;
+      } else if (childrens === '' && adultsInput.value == 0) {
+        urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}&rooms=${roomsInput.value}`;
+      } else if (childrens === '' && roomsInput.value == 0) {
+        urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}&adults=${adultsInput.value}`;
+      } else if (childrens === '') {
+        urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}&adults=${adultsInput.value}&rooms=${roomsInput.value}`;
+      } else {
+        urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}&adults=${adultsInput.value}&children=${childrens}&rooms=${roomsInput.value}`;
+      }
+
       const availableHotels = await availableHotelsData(urlAvailableHotel);
       const sortedAvailableHotels = bubbleSort(availableHotels);
 
