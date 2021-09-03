@@ -1,4 +1,6 @@
-import { loadSlider } from './slider.js';
+import { loadSliderHotels } from './slider.js';
+import { bubbleSort } from './sorter.js';
+import { filter } from './filter.js';
 
 const responseHotelsData = async (url) =>
   await fetch(url)
@@ -20,7 +22,9 @@ const getHotelsData = async (url) => {
 const loadData = async () => {
   const hotelsData = await getHotelsData('https://fe-student-api.herokuapp.com/api/hotels/popular');
 
-  hotelsData.forEach((el) => {
+  const sortHotelData = bubbleSort(hotelsData);
+
+  sortHotelData.forEach((el) => {
     const recList = document.querySelector('.recommend__list');
     const li = document.createElement('li');
     const img = document.createElement('img');
@@ -31,14 +35,13 @@ const loadData = async () => {
     hotelName.href = '#';
     hotelName.textContent += el.name;
     hotelLocation.textContent += `${el.city}, ${el.country}`;
-
     li.appendChild(img);
     li.appendChild(hotelName);
     li.appendChild(hotelLocation);
-
     recList.appendChild(li);
   });
-  loadSlider();
+  loadSliderHotels();
 };
 
 loadData();
+filter();
