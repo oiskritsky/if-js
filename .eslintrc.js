@@ -18,6 +18,7 @@ module.exports = {
     'no-console': 'off',
     'no-return-await': 'off',
     'consistent-return': 'off',
-    'no-plusplus': 'off'
+    'no-plusplus': 'off',
+    'no-alert': 'off'
   }
 };
