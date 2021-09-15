@@ -263,6 +263,7 @@ const filter = async () => {
             behavior: 'smooth'
           });
         });
+        await loadSliderAvailableHotels();
       } else {
         available.innerHTML = `<div class="not_found"> Ничего не найдено
         </div>`;
@@ -279,7 +280,6 @@ const filter = async () => {
           searchInput.value = '';
         }, 3000);
       }
-      await loadSliderAvailableHotels();
     }
   };
 
