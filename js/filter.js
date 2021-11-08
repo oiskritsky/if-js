@@ -4,6 +4,7 @@ import { loadSliderAvailableHotels } from './slider_availableBlock.js';
 const pickerForm = document.querySelector('.form-desktop-people__picker');
 const peoplePicker = document.querySelector('.people-picker');
 const sendFormButton = document.querySelector('#sendForm');
+const main = document.querySelector('main');
 const available = document.querySelector('.available');
 const availableUL = document.querySelector('.available__list');
 const searchInput = document.querySelector('#search');
@@ -18,38 +19,49 @@ const plusRooms = document.querySelector('.picker__rooms button.plus');
 const minusAdults = document.querySelector('.picker__adults button.minus');
 const minusChildren = document.querySelector('.picker__children button.minus');
 const minusRooms = document.querySelector('.picker__rooms button.minus');
-const styleBorderDisable = '1px solid #CECECE';
-const styleColorDisable = '#CECECE';
-const styleBorderEnable = '1px solid #3077c6';
-const styleColorEnable = '#3077c6';
+
+const apiBaseUrl = 'https://fe-student-api.herokuapp.com/api/';
+const apiHotelsUrl = `${apiBaseUrl}hotels`;
+
+const filterData = {
+  adults: {
+    min: 1,
+    max: 30,
+    default: 1
+  },
+  children: {
+    min: 0,
+    max: 10,
+    default: 0
+  },
+  rooms: {
+    min: 1,
+    max: 30,
+    default: 1
+  }
+};
 
 const disableButtonOnLoad = () => {
   minusAdults.disabled = true;
   minusChildren.disabled = true;
   minusRooms.disabled = true;
-  minusAdults.style.border = styleBorderDisable;
-  minusAdults.style.color = styleColorDisable;
-  minusChildren.style.border = styleBorderDisable;
-  minusChildren.style.color = styleColorDisable;
-  minusRooms.style.border = styleBorderDisable;
-  minusRooms.style.color = styleColorDisable;
 };
 
 const setValue = () => {
-  if (adultsInput.value > 30) {
-    adultsInput.value = 30;
-  } else if (adultsInput.value < 0) {
-    adultsInput.value = 0;
+  if (adultsInput.value > filterData.adults.max) {
+    adultsInput.value = filterData.adults.max;
+  } else if (adultsInput.value < filterData.adults.min) {
+    adultsInput.value = 1;
   }
-  if (childrenInput.value > 10) {
+  if (childrenInput.value > filterData.children.max) {
     childrenInput.value = 10;
-  } else if (childrenInput.value < 0) {
+  } else if (childrenInput.value < filterData.children.min) {
     childrenInput.value = 0;
   }
-  if (roomsInput.value > 30) {
+  if (roomsInput.value > filterData.rooms.max) {
     roomsInput.value = 30;
-  } else if (roomsInput.value < 0) {
-    roomsInput.value = 0;
+  } else if (roomsInput.value < filterData.rooms.min) {
+    roomsInput.value = 1;
   }
   peoplePicker.setAttribute(
     'value',
@@ -77,25 +89,16 @@ const clickChildren = (e) => {
     childrenInput.value--;
   }
 
-  if (childrenInput.value <= 0) {
-    minusChildren.style.border = styleBorderDisable;
-    minusChildren.style.color = styleColorDisable;
+  if (childrenInput.value <= filterData.children.min) {
     minusChildren.disabled = true;
-    minusChildren.removeEventListener('click', clickChildren, true);
   } else {
-    minusChildren.style.border = styleBorderEnable;
-    minusChildren.style.color = styleColorEnable;
     minusChildren.disabled = false;
   }
 
-  if (childrenInput.value >= 10) {
-    plusChildren.style.border = styleBorderDisable;
-    plusChildren.style.color = styleColorDisable;
+  if (childrenInput.value >= filterData.children.max) {
     plusChildren.disabled = true;
     plusChildren.removeEventListener('click', clickChildren, true);
   } else {
-    plusChildren.style.border = styleBorderEnable;
-    plusChildren.style.color = styleColorEnable;
     plusChildren.disabled = false;
   }
 
@@ -130,29 +133,19 @@ const childrenAgePickerHide = (e) => {
 
 const clickAdults = (e) => {
   e.preventDefault();
-
   if (e.target.classList.contains('plus')) {
     adultsInput.value++;
   } else if (e.target.classList.contains('minus')) {
     adultsInput.value--;
   }
-
-  if (adultsInput.value <= 0) {
-    minusAdults.style.border = styleBorderDisable;
-    minusAdults.style.color = styleColorDisable;
+  if (adultsInput.value <= filterData.adults.min) {
     minusAdults.disabled = true;
   } else {
-    minusAdults.style.border = styleBorderEnable;
-    minusAdults.style.color = styleColorEnable;
     minusAdults.disabled = false;
   }
-  if (adultsInput.value >= 30) {
-    plusAdults.style.border = styleBorderDisable;
-    plusAdults.style.color = styleColorDisable;
+  if (adultsInput.value >= filterData.adults.max) {
     plusAdults.disabled = true;
   } else {
-    plusAdults.style.border = styleBorderEnable;
-    plusAdults.style.color = styleColorEnable;
     plusAdults.disabled = false;
   }
 
@@ -168,22 +161,14 @@ const clickRooms = (e) => {
     roomsInput.value--;
   }
 
-  if (roomsInput.value <= 0) {
-    minusRooms.style.border = styleBorderDisable;
-    minusRooms.style.color = styleColorDisable;
+  if (roomsInput.value <= filterData.rooms.min) {
     minusRooms.disabled = true;
   } else {
-    minusRooms.style.border = styleBorderEnable;
-    minusRooms.style.color = styleColorEnable;
     minusRooms.disabled = false;
   }
-  if (roomsInput.value >= 30) {
-    plusRooms.style.border = styleBorderDisable;
-    plusRooms.style.color = styleColorDisable;
+  if (roomsInput.value >= filterData.rooms.max) {
     plusRooms.disabled = true;
   } else {
-    plusRooms.style.border = styleBorderEnable;
-    plusRooms.style.color = styleColorEnable;
     plusRooms.disabled = false;
   }
 
@@ -212,9 +197,9 @@ const allEventListener = () => {
 // === Экспортируемая функция === //
 
 const filter = async () => {
-  adultsInput.value = 0;
-  childrenInput.value = 0;
-  roomsInput.value = 0;
+  adultsInput.value = filterData.adults.default;
+  childrenInput.value = filterData.children.default;
+  roomsInput.value = filterData.rooms.default;
 
   setValue();
   allEventListener();
@@ -239,15 +224,15 @@ const filter = async () => {
     }
     if (availableUL.childNodes.length === 0) {
       if (childrens === '' && adultsInput.value == 0 && roomsInput.value == 0) {
-        urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}`;
+        urlAvailableHotel = `${apiHotelsUrl}?search=${searchInput.value}`;
       } else if (childrens === '' && adultsInput.value == 0) {
-        urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}&rooms=${roomsInput.value}`;
+        urlAvailableHotel = `${apiHotelsUrl}?search=${searchInput.value}&rooms=${roomsInput.value}`;
       } else if (childrens === '' && roomsInput.value == 0) {
-        urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}&adults=${adultsInput.value}`;
+        urlAvailableHotel = `${apiHotelsUrl}?search=${searchInput.value}&adults=${adultsInput.value}`;
       } else if (childrens === '') {
-        urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}&adults=${adultsInput.value}&rooms=${roomsInput.value}`;
+        urlAvailableHotel = `${apiHotelsUrl}?search=${searchInput.value}&adults=${adultsInput.value}&rooms=${roomsInput.value}`;
       } else {
-        urlAvailableHotel = `https://fe-student-api.herokuapp.com/api/hotels?search=${searchInput.value}&adults=${adultsInput.value}&children=${childrens}&rooms=${roomsInput.value}`;
+        urlAvailableHotel = `${apiHotelsUrl}?search=${searchInput.value}&adults=${adultsInput.value}&children=${childrens}&rooms=${roomsInput.value}`;
       }
 
       const availableHotels = await availableHotelsData(urlAvailableHotel);
@@ -278,11 +263,23 @@ const filter = async () => {
             behavior: 'smooth'
           });
         });
+        await loadSliderAvailableHotels();
       } else {
-        available.classList.remove('visible');
-        alert('По вашему запросу ничего не найдено');
+        available.innerHTML = `<div class="not_found"> Ничего не найдено
+        </div>`;
+        available.scrollIntoView({
+          block: 'center',
+          behavior: 'smooth'
+        });
+        setTimeout(() => {
+          main.scrollIntoView({
+            block: 'center',
+            behavior: 'smooth'
+          });
+          available.classList.remove('visible');
+          searchInput.value = '';
+        }, 3000);
       }
-      await loadSliderAvailableHotels();
     }
   };
 
